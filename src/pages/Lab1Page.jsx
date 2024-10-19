@@ -1,14 +1,14 @@
-import names from "../data/module-data";
+import { data } from "../data/module-data";
 
-const NameItem = ({ name }) => <li key={name}>{name}</li>;
+const NameItem = ({ id, name }) => <li key={id}>{name}</li>;
 
 function Lab1Page() {
   return (
     <>
       <h1>Laboratorium 1</h1>
       <ul>
-        {names.map((name, i) => (
-          <NameItem name={name} id={i} />
+        {data.map((person, i) => (
+          <NameItem name={person.name} id={person.id} key={i} />
         ))}
       </ul>
     </>

@@ -41,7 +41,7 @@ fs.readFile('./names.txt', 'utf8', (err, data) => {
     content += "];"
 
     //zapis łańcucha do pliku 
-    fs.writeFile('module-data.js', content, (err) => {
+    fs.writeFile('./src/data/module-data.js', content, (err) => {
         if (err) {
             console.error(err);
         }
