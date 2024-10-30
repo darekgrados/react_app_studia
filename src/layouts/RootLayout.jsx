@@ -7,8 +7,7 @@ const RootLayout = ({ children }) => {
   const menuItems = [
     { id: 1, label: "Home" },
     { id: 2, label: "Laboratorium 1" },
-    { id: 3, label: "Laboratorium 2" },
-    { id: 4, label: "people" },
+    { id: 3, label: "Laboratorium 2" }
   ];
 
   return (
