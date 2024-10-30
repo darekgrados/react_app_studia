@@ -1,19 +1,24 @@
 import { useState } from "react";
 import RootLayout from "./layouts/RootLayout.jsx";
 import { Route, Routes } from "react-router-dom";
-import Lab1Page from "./pages/Lab1Page.jsx";
-import PeoplePage from "./pages/PeoplePage.jsx";
-import NotFoundPage from "./pages/NotFoundPage.jsx";
+import Home from "./pages/Home";
+import Lab1 from "./pages/Lab1";
+import Lab2 from "./pages/Lab2";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const menuItems = [
+    { id: 1, label: "Home" },
+    { id: 2, label: "Laboratorium 1" },
+    { id: 3, label: "Laboratorium 2" },
+  ];
 
   return (
-    <RootLayout>
+    <RootLayout items={menuItems}>
       <Routes>
-        <Route path="/lab1" element={<Lab1Page />} />
-        <Route path="/lab2" element={<h1>Laboratorium 2</h1>} />
-        <Route path="/people/:id" element={<PeoplePage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/laboratorium1" element={<Lab1 />} />
+        <Route path="/laboratorium2" element={<Lab2 />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </RootLayout>
