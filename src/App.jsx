@@ -8,17 +8,17 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   const menuItems = [
-    { id: 1, label: "Home" },
-    { id: 2, label: "Laboratorium 1" },
-    { id: 3, label: "Laboratorium 2" },
+    { id: 1, label: "Home", url: "/home", urlPattern: "/home", element: <Home /> },
+    { id: 2, label: "Laboratorium 1", url: "/laboratorium1", urlPattern: "/laboratorium1", element: <Lab1 /> },
+    { id: 3, label: "Laboratorium 2", url: "/laboratorium2", urlPattern: "/laboratorium2", element: <Lab2 /> },
   ];
 
   return (
     <RootLayout items={menuItems}>
       <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/laboratorium1" element={<Lab1 />} />
-        <Route path="/laboratorium2" element={<Lab2 />} />
+        {menuItems.map((item) => (
+          <Route key={item.id} path={item.urlPattern} element={item.element} />
+        ))}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </RootLayout>
