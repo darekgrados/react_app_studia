@@ -1,0 +1,1 @@
+dodano z VM linux
