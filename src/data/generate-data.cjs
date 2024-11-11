@@ -32,7 +32,8 @@ fs.readFile('./names.txt', 'utf8', (err, data) => {
             id: i + 1,
             name: name,
             birth: randomDate(new Date(1970, 0, 1), new Date(2023, 11, 31)),
-            eyes: randomEyeColor()
+            eyes: randomEyeColor(),
+            rating: Math.floor(Math.random() * 11)
         };
         console.log(person);
         content += JSON.stringify(person) + ",\n";
