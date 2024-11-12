@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { data } from "../data/module-data";
+import RatingBar from '../components/RatingBar';
 
 const NameItem = ({ id, name, initialRating }) => {
   const [rating, setRating] = useState(initialRating);
@@ -23,7 +24,10 @@ const NameItem = ({ id, name, initialRating }) => {
 
   return (
     <li key={id} className="d-flex justify-content-between align-items-center mb-2">
-      <span>{name} (Rating: {rating})</span>
+      <span>{name}</span>
+      <div className="ms-auto me-2">
+        <RatingBar rate={rating} />
+      </div>
       <div>
         <button onClick={handleEdit} className="btn btn-primary btn-sm me-2">
           Edit
