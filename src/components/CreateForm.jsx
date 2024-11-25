@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AppContext from '../data/AppContext';
 
 function CreateForm() {
     const [errors, setErrors] = useState([]);
     const [isSending, setSending] = useState(false);
+    const context = useContext(AppContext);
+    const dispatch = context.dispatch;
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -18,18 +21,21 @@ function CreateForm() {
 
         setSending(true);
         await new Promise((resolve) => setTimeout(resolve, 1000));
-        // dispatch({
-        //     type: "add",
-        //     data:
-        // })
+        dispatch({
+            type: "add",
+            data: {
+                id: Date.now(),
+                name: data.get("name"),
+                birth: data.get("birth"),
+                eyes: data.get("eyes"),
+                rating: Number(data.get("rating"))
+            }
+        });
         setSending(false);
 
         for (let key of data.keys()) {
             e.target[key].value = ""; 
         }
-
-        //disptach żeby dodawał do listy
-       
     };
 
     return (
@@ -55,6 +61,5 @@ function CreateForm() {
        </form>
     );
 }
-
 
 export default CreateForm;

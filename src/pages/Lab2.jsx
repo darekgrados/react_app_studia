@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useParams } from 'react-router-dom';
-import { data } from '../data/module-data'; 
+import AppContext from '../data/AppContext';
 
 function Lab2() {
   const { id } = useParams();
-  const person = data.find((p) => p.id === Number(id));
+  const context = useContext(AppContext);
+  const items = context.items;
+  const person = items.find((p) => p.id === Number(id));
 
   return (
     <>

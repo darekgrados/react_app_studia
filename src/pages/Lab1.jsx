@@ -1,10 +1,13 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useContext } from 'react';
 import { data } from "../data/module-data";
 import AppReducer from '../data/AppReducer';
 import RatingBar from '../components/RatingBar';
+import AppContext from '../data/AppContext';
 
 function Lab1() {
-    const [items, dispatch] = useReducer(AppReducer, data);
+    const context = useContext(AppContext);
+    const dispatch = context.dispatch;
+    const items = context.items;
 
     return (
         <>
