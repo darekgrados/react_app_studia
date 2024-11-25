@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 function Lab4Page() {
+const navigate = useNavigate();
+
   return (
     <div>
-      <h1>Lab 4</h1>
-      <p>Lab 4 content</p>
+        <button className="btn btn-primary" onClick={() => navigate("/lab4/add")}>Dodaj</button>
     </div>
   );
 }

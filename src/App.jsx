@@ -11,34 +11,19 @@ import AppContext from "./data/AppContext.jsx";
 import AppReducer from "./data/AppReducer";
 import { useReducer } from "react";
 import { data } from "./data/module-data";
+import Lab4Page from "./pages/Lab4Page.jsx";
+import CreateForm from "./components/CreateForm.jsx";
+//import EditForm from "./components/EditForm.jsx";
 
 function App() {
   const menuItems = [
     { id: 1, label: "Home", url: "/home", element: <Home /> },
-    {
-      id: 2,
-      label: "Laboratorium 1",
-      url: "/laboratorium1",
-      element: <Lab1 />,
-    },
-    {
-      id: 3,
-      label: "Laboratorium 2",
-      url: "/laboratorium2/:id",
-      element: <Lab2 />,
-    },
-    {
-      id: 4,
-      label: "Laboratorium 3",
-      url: "/laboratorium3",
-      element: <Lab3 />,
-    },
-    {
-      id: 5,
-      label: "Laboratorium 4",
-      url: "/laboratorium4",
-      element: <Lab4 />,
-    },
+    { id: 2, label: "Laboratorium 1", url: "/laboratorium1", element: <Lab1 /> },
+    { id: 3, label: "Laboratorium 2", url: "/laboratorium2/:id", element: <Lab2 /> },
+    { id: 4, label: "Laboratorium 3", url: "/laboratorium3", element: <Lab3 /> },
+    { id: 5, label: "Laboratorium 4", url: "/laboratorium4", element: <Lab4Page /> },
+    { id: 6, label: "Lab4 Add", url: "/lab4/add", element: <CreateForm /> },
+    //{ id: 7, label: "Lab4 Edit", url: "/lab4/edit", element: <EditForm /> },
     //{ id: 4, label: 'People', url: '/people/:id', element: <PeoplePage /> },
   ];
 
