@@ -9,7 +9,8 @@ const RootLayout = ({ children }) => {
     { id: 2, label: "Laboratorium 1" },
     { id: 3, label: "Laboratorium 2" },
     { id: 4, label: "Laboratorium 3" },
-    { id: 5, label: "Laboratorium 4" }
+    { id: 5, label: "Laboratorium 4" },
+    //{ id: 6, label: "Lab4 Add", url: "/lab4/add" }
   ];
 
   return (

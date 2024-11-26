@@ -1,8 +1,11 @@
-export default function AppReducer(state, action) {
+function AppReducer(state, action) {
     switch (action.type) {
-        case "edit": {
-            return state;
-        }
+        case "add":
+            return [...state, action.data];
+        case "edit":
+            return state.map(item => item.id === action.data.id ? action.data : item);
+        case "delete":
+            return state.filter(item => item.id !== action.id);
         case "rate": {
             return state.map(item => 
                 item.id === action.id 
@@ -10,10 +13,9 @@ export default function AppReducer(state, action) {
                     : item
             );
         }
-        case "delete": {
-            return state.filter(item => item.id !== action.id);
-        }
         default:
             return state;
     }
 }
+
+export default AppReducer;

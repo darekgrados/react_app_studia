@@ -1,4 +1,5 @@
-import React, { useReducer, useContext } from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { data } from "../data/module-data";
 import AppReducer from '../data/AppReducer';
 import RatingBar from '../components/RatingBar';
@@ -8,6 +9,7 @@ function Lab1() {
     const context = useContext(AppContext);
     const dispatch = context.dispatch;
     const items = context.items;
+    const navigate = useNavigate();
 
     return (
         <>
@@ -21,7 +23,7 @@ function Lab1() {
                         </div>
                         <div>
                             <button
-                                onClick={() => dispatch({ type: "edit", id: person.id })}
+                                onClick={() => navigate(`/lab4/edit/${person.id}`)}
                                 className="btn btn-primary btn-sm me-2"
                             >
                                 Edit

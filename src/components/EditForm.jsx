@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import AppContext from '../data/AppContext';
 
 function EditForm() {
@@ -10,6 +10,7 @@ function EditForm() {
         defaultValues: context.items.find(item => item.id === Number(id))
     });
     const dispatch = context.dispatch;
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         dispatch({
@@ -22,27 +23,36 @@ function EditForm() {
                 rating: Number(data.rating)
             }
         });
+        navigate("/laboratorium1"); // Navigate back to Lab1 after editing
     };
 
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="p-3 border rounded">
             <input type="hidden" {...register("id")} />
             
-            <label htmlFor="name">Imię użytkownika</label>
-            <input type="text" id="name" {...register("name", { required: true, minLength: 3, maxLength: 40 })} />
-            {errors.name && <p className="text-danger">Imię użytkownika jest wymagane i musi mieć od 3 do 40 znaków.</p>}
+            <div className="mb-3">
+                <label htmlFor="name" className="form-label">Imię użytkownika</label>
+                <input type="text" id="name" {...register("name", { required: true, minLength: 3, maxLength: 40 })} className="form-control" />
+                {errors.name && <p className="text-danger">Imię użytkownika jest wymagane i musi mieć od 3 do 40 znaków.</p>}
+            </div>
             
-            <label htmlFor="birth">Data urodzenia</label>
-            <input type="date" id="birth" {...register("birth", { required: true })} />
-            {errors.birth && <p className="text-danger">Data urodzenia jest wymagana.</p>}
+            <div className="mb-3">
+                <label htmlFor="birth" className="form-label">Data urodzenia</label>
+                <input type="date" id="birth" {...register("birth", { required: true })} className="form-control" />
+                {errors.birth && <p className="text-danger">Data urodzenia jest wymagana.</p>}
+            </div>
             
-            <label htmlFor="eyes">Kolor oczu użytkownika</label>
-            <input type="text" id="eyes" {...register("eyes", { required: true, minLength: 3, maxLength: 20 })} />
-            {errors.eyes && <p className="text-danger">Kolor oczu jest wymagany i musi mieć od 3 do 20 znaków.</p>}
+            <div className="mb-3">
+                <label htmlFor="eyes" className="form-label">Kolor oczu użytkownika</label>
+                <input type="text" id="eyes" {...register("eyes", { required: true, minLength: 3, maxLength: 20 })} className="form-control" />
+                {errors.eyes && <p className="text-danger">Kolor oczu jest wymagany i musi mieć od 3 do 20 znaków.</p>}
+            </div>
             
-            <label htmlFor="rating">Rating użytkownika</label>
-            <input type="number" id="rating" {...register("rating", { required: true, min: 0, max: 10 })} />
-            {errors.rating && <p className="text-danger">Rating użytkownika jest wymagany i musi być w zakresie od 0 do 10.</p>}
+            <div className="mb-3">
+                <label htmlFor="rating" className="form-label">Rating użytkownika</label>
+                <input type="number" id="rating" {...register("rating", { required: true, min: 0, max: 10 })} className="form-control" />
+                {errors.rating && <p className="text-danger">Rating użytkownika jest wymagany i musi być w zakresie od 0 do 10.</p>}
+            </div>
 
             <button type="submit" className="btn btn-primary mt-3">Zapisz</button>
         </form>

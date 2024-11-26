@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import AppContext from '../data/AppContext';
 
 function CreateForm() {
@@ -6,6 +7,7 @@ function CreateForm() {
     const [isSending, setSending] = useState(false);
     const context = useContext(AppContext);
     const dispatch = context.dispatch;
+    const navigate = useNavigate();
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -38,27 +40,33 @@ function CreateForm() {
         for (let key of data.keys()) {
             e.target[key].value = "";
         }
+
+        navigate("/laboratorium1", { replace: true }); // Navigate back to Lab1 after adding without refreshing
     };
 
     return (
-       <form onSubmit={onSubmit}>
+       <form onSubmit={onSubmit} className="p-3 border rounded">
         <div className="text-danger">
             {errors.map((e, i) => <p key={i}>{e}</p>)}
         </div>
-        <label htmlFor="name">Imię użytkownika</label>
-        <input type="text" id="name" name="name" placeholder="Wpisz imię użytkownika" minLength="3" maxLength="40" required />
-        
-        <label htmlFor="birth">Data urodzenia</label>
-        <input type="date" id="birth" name="birth" required />
-        
-        <label htmlFor="eyes">Kolor oczu użytkownika</label>
-        <input type="text" id="eyes" name="eyes" placeholder="Wpisz kolor oczu" minLength="3" maxLength="20" required />
-        
-        <label htmlFor="rating">Rating użytkownika</label>
-        <input type="number" id="rating" name="rating" min="0" max="10" required />
-
+        <div className="mb-3">
+            <label htmlFor="name" className="form-label">Imię użytkownika</label>
+            <input type="text" id="name" name="name" className="form-control" placeholder="Wpisz imię użytkownika" minLength="3" maxLength="40" required />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="birth" className="form-label">Data urodzenia</label>
+            <input type="date" id="birth" name="birth" className="form-control" required />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="eyes" className="form-label">Kolor oczu użytkownika</label>
+            <input type="text" id="eyes" name="eyes" className="form-control" placeholder="Wpisz kolor oczu" minLength="3" maxLength="20" required />
+        </div>
+        <div className="mb-3">
+            <label htmlFor="rating" className="form-label">Rating użytkownika</label>
+            <input type="number" id="rating" name="rating" className="form-control" min="0" max="10" required />
+        </div>
         <button type="submit" className="btn btn-primary mt-3" disabled={isSending}>Zapisz</button>
-        <button type="reset" className="btn btn-primary mt-3">Wyczyść</button>
+        <button type="reset" className="btn btn-secondary mt-3 ms-2">Wyczyść</button>
        </form>
     );
 }
