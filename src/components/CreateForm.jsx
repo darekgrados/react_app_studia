@@ -10,12 +10,14 @@ function CreateForm() {
     const onSubmit = async (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
+        const newErrors = [];
+
         if (data.get("name").charAt(0) !== data.get("name").charAt(0).toUpperCase()) {
-            setErrors([...errors, "Nazwa użytkownika musi zaczynać się od wielkiej litery"]);
-            return;
+            newErrors.push("Nazwa użytkownika musi zaczynać się od wielkiej litery");
         }
 
-        if (errors.length != 0) {            
+        if (newErrors.length > 0) {
+            setErrors(newErrors);
             return;
         }
 
@@ -34,20 +36,19 @@ function CreateForm() {
         setSending(false);
 
         for (let key of data.keys()) {
-            e.target[key].value = ""; 
+            e.target[key].value = "";
         }
     };
 
     return (
        <form onSubmit={onSubmit}>
-
-        {/* {"id":2,"name":"Ola","birth":"1983-12-02","eyes":"brown","rating":7}, */}
-        {/* edit na react hook form */}
-
+        <div className="text-danger">
+            {errors.map((e, i) => <p key={i}>{e}</p>)}
+        </div>
         <label htmlFor="name">Imię użytkownika</label>
         <input type="text" id="name" name="name" placeholder="Wpisz imię użytkownika" minLength="3" maxLength="40" required />
         
-        <label htmlFor="birth">Nazwa użytkownika</label>
+        <label htmlFor="birth">Data urodzenia</label>
         <input type="date" id="birth" name="birth" required />
         
         <label htmlFor="eyes">Kolor oczu użytkownika</label>

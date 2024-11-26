@@ -13,7 +13,7 @@ import { useReducer } from "react";
 import { data } from "./data/module-data";
 import Lab4Page from "./pages/Lab4Page.jsx";
 import CreateForm from "./components/CreateForm.jsx";
-//import EditForm from "./components/EditForm.jsx";
+import EditForm from "./components/EditForm.jsx";
 
 function App() {
   const menuItems = [
@@ -23,7 +23,7 @@ function App() {
     { id: 4, label: "Laboratorium 3", url: "/laboratorium3", element: <Lab3 /> },
     { id: 5, label: "Laboratorium 4", url: "/laboratorium4", element: <Lab4Page /> },
     { id: 6, label: "Lab4 Add", url: "/lab4/add", element: <CreateForm /> },
-    //{ id: 7, label: "Lab4 Edit", url: "/lab4/edit", element: <EditForm /> },
+    { id: 7, label: "Lab4 Edit", url: "/lab4/edit", element: <EditForm /> },
     //{ id: 4, label: 'People', url: '/people/:id', element: <PeoplePage /> },
   ];
 
